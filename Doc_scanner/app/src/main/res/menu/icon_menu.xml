@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/setting"
+        android:icon="@drawable/background_whatsapp"
+        android:title="Setting" />
+
+    <item
+        android:id="@+id/shareApp"
+        android:icon="@drawable/background_whatsapp"
+        android:title="Share App" />
+
+    <item
+        android:id="@+id/rateUs"
+        android:icon="@drawable/background_whatsapp"
+        android:title="Rate Us" />
+</menu>
