@@ -61,7 +61,6 @@ class ContainerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         toggle.syncState()
 
         val text1 = nav.findViewById<TextView>(R.id.signIn)
-        
     }
 
     private fun loadFragment(navigationFragment: Fragment) {
