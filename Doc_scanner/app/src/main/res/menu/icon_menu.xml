@@ -1,17 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/setting"
-        android:icon="@drawable/background_whatsapp"
-        android:title="Setting" />
+    <group
+        android:id="@+id/group1"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/setting"
+            android:icon="@drawable/ic_settings_menu"
+            android:title="@string/setting" />
+    </group>
+    <group
+        android:id="@+id/group2"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/shareThisApp"
+            android:icon="@drawable/ic_share_menu"
+            android:title="@string/share_app" />
 
-    <item
-        android:id="@+id/shareApp"
-        android:icon="@drawable/background_whatsapp"
-        android:title="Share App" />
+        <item
+            android:id="@+id/notHappy"
+            android:icon="@drawable/ic_not_happy_menu"
+            android:title="@string/not_happy_with_us" />
 
-    <item
-        android:id="@+id/rateUs"
-        android:icon="@drawable/background_whatsapp"
-        android:title="Rate Us" />
+        <item
+            android:id="@+id/rateUs"
+            android:icon="@drawable/ic_rate_us_menu"
+            android:title="@string/rate_us" />
+
+        <item
+            android:id="@+id/recognitions"
+            android:icon="@drawable/ic_recognitions_menu"
+            android:title="@string/our_recognitions" />
+        <item
+            android:id="@+id/supportUs"
+            android:icon="@drawable/ic_support_us_menu"
+            android:title="@string/support_us" />
+    </group>
+
+    <group
+        android:id="@+id/group3"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/faq"
+            android:icon="@drawable/ic_faq_menu"
+            android:title="@string/faq" />
+        <item
+            android:id="@+id/privacyMenu"
+            android:icon="@drawable/ic_privacy_menu"
+            android:title="@string/privacy" />
+    </group>
+
 </menu>

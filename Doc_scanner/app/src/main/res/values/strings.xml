@@ -8,4 +8,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="import_from_whatsapp">Import from Whatsapp</string>
     <string name="share_app">Share App</string>
+    <string name="not_happy_with_us">Not happy With us?</string>
+    <string name="setting">Setting</string>
+    <string name="rate_us">Rate Us</string>
+    <string name="our_recognitions">Our Recognitions</string>
+    <string name="support_us">Support us</string>
+    <string name="privacy">Privacy</string>
+    <string name="faq">FAQ</string>
 </resources>
