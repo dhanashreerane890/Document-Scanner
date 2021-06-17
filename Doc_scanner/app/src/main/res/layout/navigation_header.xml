@@ -1,27 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:orientation="vertical"
+    android:layout_height="wrap_content"
     android:background="@color/theme_color"
-    android:layout_height="wrap_content">
+    android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="@dimen/_50sdp"
-        android:layout_height="@dimen/_50sdp"
-        android:src="@drawable/ic_baseline_person_24"
-        />
-  <TextView
-      android:id="@+id/signIn"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:textColor="@color/black"
-      android:text="sign in"
-      />
-
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:text="Back up your data"
-        />
+        android:paddingTop="@dimen/_20sdp"
+        android:paddingBottom="@dimen/_10sdp">
+
+        <ImageView
+            android:id="@+id/signInImage"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/_15sdp"
+            android:src="@drawable/ic_baseline_person_24" />
+
+        <TextView
+            android:id="@+id/signIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/_5sdp"
+            android:layout_toRightOf="@+id/signInImage"
+            android:text="sign in"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15sdp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/signIn"
+            android:layout_toRightOf="@+id/signInImage"
+            android:gravity="start"
+            android:text="Back up your docs on cloud \nfree 250MB strage"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+
+
 </androidx.appcompat.widget.LinearLayoutCompat>

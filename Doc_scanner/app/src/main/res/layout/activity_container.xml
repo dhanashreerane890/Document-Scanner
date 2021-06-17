@@ -22,7 +22,11 @@
             android:background="@color/theme_color"
             app:title="Kaagaz"
             app:titleTextColor="@color/white"
-           />
+
+            app:menu="@menu/app_bar_menu"/>
+
+          
+
     </LinearLayout>
 
 
