@@ -1,6 +1,7 @@
 package com.masai.scanner.home_tabs
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Environment
 import android.view.LayoutInflater
@@ -9,13 +10,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.masai.scanner.PdfActivity
 import com.masai.scanner.R
+import com.masai.scanner.adapter.OnPdfSelectListner
 import com.masai.scanner.adapter.PdfViewAdapter
 import java.io.File
 import java.util.*
 
 
-class MyDocumentsFragment : Fragment() {
+class MyDocumentsFragment : Fragment(),OnPdfSelectListner {
     private var pdfAdapter: PdfViewAdapter? = null
     private var pdfList: List<File>? = null
     private var recyclerView: RecyclerView? = null
@@ -55,8 +58,15 @@ class MyDocumentsFragment : Fragment() {
         recyclerView?.layoutManager=linearLayoutManager
         pdfList = ArrayList()
        findPdf(Environment.getExternalStorageDirectory())?.let { (pdfList as ArrayList<File>).addAll(it) }
-        pdfAdapter= PdfViewAdapter(context,pdfList)
+        pdfAdapter= PdfViewAdapter(context,pdfList,this)
         recyclerView?.adapter =pdfAdapter
+    }
+
+    override fun onPdfSelected(file: File?) {
+        if (file != null) {
+            startActivity(Intent(activity,PdfActivity::class.java)
+                .putExtra("path",file.absolutePath))
+        }
     }
 
 

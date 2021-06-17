@@ -2,6 +2,7 @@ package com.masai.scanner.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -18,10 +19,13 @@ public class PdfViewAdapter extends RecyclerView.Adapter<PdfViewHolder> {
 
     private Context context;
     private List<File> pdfFiles;
+    private OnPdfSelectListner listener;
 
-    public PdfViewAdapter(Context context, List<File> pdfFiles) {
+
+    public PdfViewAdapter(Context context, List<File> pdfFiles, OnPdfSelectListner listener) {
         this.context = context;
         this.pdfFiles = pdfFiles;
+        this.listener = listener;
     }
 
     @NotNull
@@ -34,6 +38,12 @@ public class PdfViewAdapter extends RecyclerView.Adapter<PdfViewHolder> {
     public void onBindViewHolder( @NotNull PdfViewHolder holder, int position) {
          holder.textName.setText(pdfFiles.get(position).getName());
          holder.textName.setSelected(true);
+         holder.cardView.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 listener.onPdfSelected(pdfFiles.get(position));
+             }
+         });
     }
 
     @Override
