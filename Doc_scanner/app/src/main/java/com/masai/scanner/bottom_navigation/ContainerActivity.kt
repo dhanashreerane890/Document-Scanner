@@ -1,50 +1,31 @@
 package com.masai.scanner.bottom_navigation
 
-
-//
-
 import android.Manifest
 import android.content.res.Configuration
-
-import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
-import android.widget.ImageButton
-import android.widget.SearchView
-
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
 import android.provider.MediaStore
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.ProgressBar
-
+import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-
-
-import androidx.appcompat.widget.Toolbar
-
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import com.github.barteksc.pdfviewer.PDFView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.TextRecognition
 import com.masai.scanner.R
-
 import com.masai.scanner.side_drawer.SettingFragment
-
 import com.pdftron.pdf.*
 import com.pdftron.pdf.config.ViewerConfig
 import com.pdftron.pdf.controls.DocumentActivity
@@ -53,13 +34,11 @@ import com.scanlibrary.ScanConstants
 import com.scanlibrary.ScannerContract
 import com.scanlibrary.Utils
 import kotlinx.android.synthetic.main.activity_container.*
-
 import kotlinx.android.synthetic.main.navigation_header.*
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
 import java.util.*
-
 
 
 class ContainerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
