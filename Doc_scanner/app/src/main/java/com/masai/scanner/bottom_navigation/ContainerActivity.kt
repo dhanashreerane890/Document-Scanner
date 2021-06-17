@@ -338,8 +338,6 @@ class ContainerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 //startActivity(Intent(this,ContainerActivity::class.java))
                 Toast.makeText(this,outputPath.toString(),Toast.LENGTH_SHORT).show()
 
-
-
             }
             .addOnFailureListener { e ->
                // hideProgress()
