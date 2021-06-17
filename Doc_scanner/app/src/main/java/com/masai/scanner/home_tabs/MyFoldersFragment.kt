@@ -1,34 +1,30 @@
 package com.masai.scanner.home_tabs
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import com.masai.scanner.R
+import com.masai.scanner.dialog_box.EnterFolderName
+import com.masai.scanner.local_database.FolderDatabase
+import com.masai.scanner.local_database.FoldersEntity
+import com.masai.scanner.repository.FolderRepository
+import com.masai.scanner.viewmodels.FolderViewModel
+import com.masai.scanner.viewmodels.FolderViewModelFactory
+import kotlinx.android.synthetic.main.fragment_my_folders.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class MyFoldersFragment : Fragment(), EnterFolderName.DialogListener {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [MyFoldersFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class MyFoldersFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    private val foldersDAO by lazy {
+        val roomDatabase = FolderDatabase.getDatabase(requireContext())
+        roomDatabase.getFolderDao()
     }
+    val repository by lazy {
+        FolderRepository(foldersDAO)
+    }
+    private lateinit var viewModel: FolderViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,23 +34,34 @@ class MyFoldersFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_my_folders, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MyFoldersFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MyFoldersFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        settingViewModel()
     }
+
+    private fun settingViewModel() {
+        val viewModelFactory = FolderViewModelFactory(repository)
+        viewModel = ViewModelProviders.of(this, viewModelFactory)
+            .get(FolderViewModel::class.java)
+
+        addFolders.setOnClickListener {
+            openDialog()
+
+        }
+
+    }
+
+    private fun openDialog() {
+        val folderDialog = EnterFolderName()
+        activity?.let { folderDialog.show(it.supportFragmentManager, "dialog") }
+
+    }
+
+    override fun applyText(folderName: String?) {
+        val foldersEntity = folderName?.let { FoldersEntity(it, 0) }
+        foldersEntity?.let { viewModel.addFolder(it) }
+    }
+
+
 }

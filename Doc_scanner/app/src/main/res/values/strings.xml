@@ -15,4 +15,6 @@
     <string name="support_us">Support us</string>
     <string name="privacy">Privacy</string>
     <string name="faq">FAQ</string>
+    <string name="add_your_folder">Add your folder</string>
+    <string name="enter_folder_name">Enter folder name</string>
 </resources>
