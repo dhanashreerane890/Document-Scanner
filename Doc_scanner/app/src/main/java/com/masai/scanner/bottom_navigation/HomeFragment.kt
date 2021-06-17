@@ -5,11 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.masai.scanner.R
 import com.masai.scanner.home_tabs.MyDocumentsFragment
 import com.masai.scanner.home_tabs.MyFoldersFragment
+import kotlinx.android.synthetic.main.activity_container.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
@@ -31,6 +33,7 @@ class HomeFragment : Fragment() {
 
         viewPagerHome.adapter = adapter
         tabLayoutsHome.setupWithViewPager(viewPagerHome)
+
     }
 
     class MyViewPagerAdapter(manager: FragmentManager) : FragmentPagerAdapter(manager) {
