@@ -42,6 +42,8 @@
             android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize"
             android:windowSoftInputMode="adjustPan"
             tools:ignore="MissingClass" />
+        <activity android:name=".RegisterActivity"/>
+        <activity android:name=".LoginActivity"/>
     </application>
 
 </manifest>

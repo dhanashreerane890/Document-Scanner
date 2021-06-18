@@ -15,4 +15,8 @@
     <string name="support_us">Support us</string>
     <string name="privacy">Privacy</string>
     <string name="faq">FAQ</string>
+    <string name="register">Register</string>
+    <string name="login_small">Login</string>
+    <string name="sign_in">Sign In</string>
+    <string name="login">Login</string>
 </resources>

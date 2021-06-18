@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "472633034434",
+    "project_id": "scanner-e7412",
+    "storage_bucket": "scanner-e7412.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:472633034434:android:6c155367556cd9335ddd5b",
+        "android_client_info": {
+          "package_name": "com.masai.scanner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "472633034434-eke5gnqka1cutfv0mnuqegl3fkadhf7j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHR6zsOsXa4zL13IR2XJfmf1RKn2G6OSo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "472633034434-eke5gnqka1cutfv0mnuqegl3fkadhf7j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

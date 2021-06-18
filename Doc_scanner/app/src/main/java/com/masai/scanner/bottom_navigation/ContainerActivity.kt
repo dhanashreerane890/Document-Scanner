@@ -3,48 +3,37 @@ package com.masai.scanner.bottom_navigation
 
 //
 
+
 import android.Manifest
+import android.content.Intent
 import android.content.res.Configuration
-
-import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
-import android.widget.ImageButton
-import android.widget.SearchView
-
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
 import android.provider.MediaStore
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.ProgressBar
-
+import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-
-
-import androidx.appcompat.widget.Toolbar
-
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import com.github.barteksc.pdfviewer.PDFView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.TextRecognition
+import com.masai.scanner.LoginActivity
 import com.masai.scanner.R
-
+import com.masai.scanner.RegisterActivity
 import com.masai.scanner.side_drawer.SettingFragment
-
 import com.pdftron.pdf.*
 import com.pdftron.pdf.config.ViewerConfig
 import com.pdftron.pdf.controls.DocumentActivity
@@ -53,13 +42,11 @@ import com.scanlibrary.ScanConstants
 import com.scanlibrary.ScannerContract
 import com.scanlibrary.Utils
 import kotlinx.android.synthetic.main.activity_container.*
-
 import kotlinx.android.synthetic.main.navigation_header.*
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
 import java.util.*
-
 
 
 class ContainerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -70,6 +57,7 @@ class ContainerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     private lateinit var toolbar: androidx.appcompat.widget.Toolbar
     private lateinit var headerView: View
     var navigationFragment: Fragment? = null
+    var auth: FirebaseAuth? = null
 
 
 //    private val PERMISSION_CODE = 1000
@@ -181,10 +169,18 @@ class ContainerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
         headerView = nav.getHeaderView(0)
 
-        val signin = headerView.findViewById<TextView>(R.id.signIn)
+        val signinText = headerView.findViewById<TextView>(R.id.signIn)
         //write code of firebase to set username to sign in user
-        signin.text = "ABCDEF"
+        //signinText.text = "ABCDEF"
+        signinText.setOnClickListener {
+            startActivity(Intent(this,LoginActivity::class.java))
+        }
+        auth= FirebaseAuth.getInstance()
+        if(auth?.currentUser!=null) {
+            val arr = auth?.currentUser?.email?.split("@")
+            signinText.text = arr?.get(0)
 
+        }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
