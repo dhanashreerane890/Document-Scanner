@@ -1,50 +1,33 @@
 package com.masai.scanner.bottom_navigation
 
 
-//
-
 import android.Manifest
 import android.content.res.Configuration
-
-import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
-import android.widget.ImageButton
-import android.widget.SearchView
-
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
 import android.provider.MediaStore
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.ProgressBar
-
+import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-
-
-import androidx.appcompat.widget.Toolbar
-
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import com.github.barteksc.pdfviewer.PDFView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.TextRecognition
 import com.masai.scanner.R
-
+import com.masai.scanner.home_tabs.MyDocumentsFragment
 import com.masai.scanner.side_drawer.SettingFragment
-
 import com.pdftron.pdf.*
 import com.pdftron.pdf.config.ViewerConfig
 import com.pdftron.pdf.controls.DocumentActivity
@@ -53,13 +36,11 @@ import com.scanlibrary.ScanConstants
 import com.scanlibrary.ScannerContract
 import com.scanlibrary.Utils
 import kotlinx.android.synthetic.main.activity_container.*
-
 import kotlinx.android.synthetic.main.navigation_header.*
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
 import java.util.*
-
 
 
 class ContainerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -88,7 +69,7 @@ class ContainerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
     //
 
-    private lateinit var button:FloatingActionButton
+    private lateinit var button: FloatingActionButton
 //    private lateinit var progressBar: ProgressBar
 //    private lateinit var progressText: TextView
 
@@ -133,7 +114,7 @@ class ContainerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 val localJpeg = Utils.saveBitmapAsJpeg(bitmap, filesDir)
                 val image = InputImage.fromFilePath(this, Uri.fromFile(localJpeg))
 
-               // showProgress()
+                // showProgress()
 
                 // Process image using ML Kit
                 processOCR(imgWidth, imgHeight, image, localJpeg)
@@ -255,16 +236,30 @@ class ContainerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
 
     //need to set listener
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.app_bar_menu, menu)
-        val menuItem = menu?.findItem(R.id.searchBar)
-        val searchView = menuItem?.actionView as SearchView
-        searchView.queryHint
-        return super.onCreateOptionsMenu(menu)
-    }
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        menuInflater.inflate(R.menu.app_bar_menu, menu)
+//        val menuItem = menu?.findItem(R.id.searchBar)
+//        val searchView = menuItem?.actionView as SearchView
+//
+//
+//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(query: String): Boolean {
+//                return false
+//            }
+//
+//            override fun onQueryTextChange(newText: String): Boolean {
+//                val docFrag = MyDocumentsFragment()
+//                docFrag.pdfAdapter?.filter?.filter(newText)
+//                return false
+//            }
+//        })
+//
+//
+//        return super.onCreateOptionsMenu(menu)
+//    }
 
 
-   // fun check() {
+    // fun check() {
 //        //first we check permission
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 //            if (checkSelfPermission(Manifest.permission.CAMERA) ==
@@ -364,7 +359,7 @@ class ContainerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
             .addOnSuccessListener { visionText ->
 
                 // Create the PDF containing the recognized text
-                val outputPath= createPDF(imgWidth, imgHeight, localJpeg, visionText)
+                val outputPath = createPDF(imgWidth, imgHeight, localJpeg, visionText)
 
                 // Open the document in the viewer
                 val config =
@@ -375,13 +370,13 @@ class ContainerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                     config
                 )
                 //readPdf(outputPath)
-               // hideProgress()
+                // hideProgress()
                 //startActivity(Intent(this,ContainerActivity::class.java))
-                Toast.makeText(this,outputPath.toString(),Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, outputPath.toString(), Toast.LENGTH_SHORT).show()
 
             }
             .addOnFailureListener { e ->
-               // hideProgress()
+                // hideProgress()
                 Toast.makeText(this, "Could not recognize text", Toast.LENGTH_SHORT).show()
             }
     }
@@ -455,7 +450,7 @@ class ContainerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 //        button.visibility = View.GONE
 //    }
 
-//    private fun hideProgress() {
+    //    private fun hideProgress() {
 //        progressBar.visibility = View.GONE
 //        progressText.visibility = View.GONE
 //        button.visibility = View.VISIBLE

@@ -5,6 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <EditText
+        android:id="@+id/etSearchFiles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5sdp"
+        android:background="@drawable/box_for_edit_text"
+        android:hint="@string/search_files"
+        android:padding="@dimen/_5sdp"
+        android:textColor="@color/theme_color"
+        app:layout_constraintBottom_toTopOf="@id/recyclerViewForFile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewForFile"
         android:layout_width="match_parent"
@@ -12,7 +26,7 @@
         android:layout_margin="@dimen/_5sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/etSearchFiles" />
 
     <Button
         android:id="@+id/button"
