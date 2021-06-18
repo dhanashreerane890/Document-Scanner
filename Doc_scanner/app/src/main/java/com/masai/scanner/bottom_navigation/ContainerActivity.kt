@@ -1,8 +1,6 @@
 package com.masai.scanner.bottom_navigation
 
 
-//
-
 
 import android.Manifest
 import android.content.Intent
@@ -32,7 +30,11 @@ import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.TextRecognition
 import com.masai.scanner.LoginActivity
 import com.masai.scanner.R
+
+import com.masai.scanner.home_tabs.MyDocumentsFragment
+
 import com.masai.scanner.RegisterActivity
+
 import com.masai.scanner.side_drawer.SettingFragment
 import com.pdftron.pdf.*
 import com.pdftron.pdf.config.ViewerConfig
@@ -76,7 +78,7 @@ class ContainerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
     //
 
-    private lateinit var button:FloatingActionButton
+    private lateinit var button: FloatingActionButton
 //    private lateinit var progressBar: ProgressBar
 //    private lateinit var progressText: TextView
 
@@ -121,7 +123,7 @@ class ContainerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 val localJpeg = Utils.saveBitmapAsJpeg(bitmap, filesDir)
                 val image = InputImage.fromFilePath(this, Uri.fromFile(localJpeg))
 
-               // showProgress()
+                // showProgress()
 
                 // Process image using ML Kit
                 processOCR(imgWidth, imgHeight, image, localJpeg)
@@ -251,16 +253,30 @@ class ContainerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
 
     //need to set listener
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.app_bar_menu, menu)
-        val menuItem = menu?.findItem(R.id.searchBar)
-        val searchView = menuItem?.actionView as SearchView
-        searchView.queryHint
-        return super.onCreateOptionsMenu(menu)
-    }
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        menuInflater.inflate(R.menu.app_bar_menu, menu)
+//        val menuItem = menu?.findItem(R.id.searchBar)
+//        val searchView = menuItem?.actionView as SearchView
+//
+//
+//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(query: String): Boolean {
+//                return false
+//            }
+//
+//            override fun onQueryTextChange(newText: String): Boolean {
+//                val docFrag = MyDocumentsFragment()
+//                docFrag.pdfAdapter?.filter?.filter(newText)
+//                return false
+//            }
+//        })
+//
+//
+//        return super.onCreateOptionsMenu(menu)
+//    }
 
 
-   // fun check() {
+    // fun check() {
 //        //first we check permission
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 //            if (checkSelfPermission(Manifest.permission.CAMERA) ==
@@ -360,7 +376,7 @@ class ContainerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
             .addOnSuccessListener { visionText ->
 
                 // Create the PDF containing the recognized text
-                val outputPath= createPDF(imgWidth, imgHeight, localJpeg, visionText)
+                val outputPath = createPDF(imgWidth, imgHeight, localJpeg, visionText)
 
                 // Open the document in the viewer
                 val config =
@@ -371,13 +387,13 @@ class ContainerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                     config
                 )
                 //readPdf(outputPath)
-               // hideProgress()
+                // hideProgress()
                 //startActivity(Intent(this,ContainerActivity::class.java))
-                Toast.makeText(this,outputPath.toString(),Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, outputPath.toString(), Toast.LENGTH_SHORT).show()
 
             }
             .addOnFailureListener { e ->
-               // hideProgress()
+                // hideProgress()
                 Toast.makeText(this, "Could not recognize text", Toast.LENGTH_SHORT).show()
             }
     }
@@ -451,7 +467,7 @@ class ContainerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 //        button.visibility = View.GONE
 //    }
 
-//    private fun hideProgress() {
+    //    private fun hideProgress() {
 //        progressBar.visibility = View.GONE
 //        progressText.visibility = View.GONE
 //        button.visibility = View.VISIBLE

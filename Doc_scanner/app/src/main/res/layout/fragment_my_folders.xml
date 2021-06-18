@@ -1,13 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="_pdf_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5sdp"
+        android:elevation="@dimen/_10sdp">
 
-</FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_folder_add"
+            android:drawablePadding="@dimen/_5sdp"
+            android:padding="@dimen/_5sdp"
+            android:text="@string/add_your_folder"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/_15sdp" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5sdp"
+        android:elevation="@dimen/_10sdp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_folder"
+            android:drawablePadding="@dimen/_5sdp"
+            android:padding="@dimen/_5sdp"
+            android:text="@string/notes"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/_15sdp" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5sdp"
+        android:elevation="@dimen/_10sdp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_folder"
+            android:drawablePadding="@dimen/_5sdp"
+            android:padding="@dimen/_5sdp"
+            android:text="@string/bills"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/_15sdp" />
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>
